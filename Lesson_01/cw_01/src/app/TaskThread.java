@@ -1,6 +1,6 @@
 package app;
 
-public class TaskThread extends Thread{
+public class TaskThread extends Thread {
     private String title;
 
     public TaskThread(String title) {

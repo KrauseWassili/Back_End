@@ -1,7 +1,5 @@
-package app;
-
 public class MyTask implements Runnable{
-private String title;
+    private String title;
 
     public MyTask(String title) {
         this.title = title;
@@ -9,7 +7,7 @@ private String title;
 
     @Override
     public void run() {
-        System.out.println("Thread, созданный черзе interface Runnable");
+        System.out.println("Thread созданный через interface Runnable");
         System.out.println("старт " + title);
         for (int i = 0; i < 10; i++) {
             System.out.println(title + ": " + i);
