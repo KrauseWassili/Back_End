@@ -1,0 +1,3 @@
+https://reqbin.com/req/c-r8g2qivg/how-to-use-curl
+https://developer.mozilla.org/ru/docs/Web/HTTP
+https://tomcat.apache.org/download-90.cgi
