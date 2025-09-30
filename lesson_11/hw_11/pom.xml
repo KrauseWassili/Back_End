@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.aittr</groupId>
-    <artifactId>hw_08</artifactId>
+    <artifactId>currency</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hw_08</name>
-    <description>hw_08</description>
+    <name>currency</name>
+    <description>currency</description>
     <url/>
     <licenses>
         <license/>

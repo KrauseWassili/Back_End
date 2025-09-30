@@ -1,10 +1,8 @@
-package de.aittr.code.model;
+package de.aittr.user.model;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -17,8 +15,8 @@ public class User {
 
     public User(long id, String name, String email, String password) {
         this.id = id;
-        this.name = name;
         this.email = email;
+        this.name = name;
         this.password = password;
     }
 }

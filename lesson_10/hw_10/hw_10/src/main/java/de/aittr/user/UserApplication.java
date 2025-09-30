@@ -9,7 +9,7 @@ user?sort=email - по еmail
  */
 
 
-package de.aittr.code;
+package de.aittr.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

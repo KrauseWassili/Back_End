@@ -1,37 +1,42 @@
-package de.aittr.code.controllers;
+package de.aittr.user.controllers;
 
-import de.aittr.code.dto.UserRequestDto;
-import de.aittr.code.dto.UserResponseDto;
-import de.aittr.code.model.User;
+import de.aittr.user.dto.UserResponseDto;
+import de.aittr.user.mapper.UserMapper;
+import de.aittr.user.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-import static java.util.stream.Collectors.toList;
-
+@RequiredArgsConstructor
+@CrossOrigin
 @RestController
 public class UserController {
-    private static Long lastId = 4L;
 
-    private static final Map<Long, User> USERS = new HashMap<>();
+    private final UserMapper mapper;
+    private final UserService service;
 
-    static {
-        USERS.put(1L, new User(1L,"Peter", "a.peter@web.de", "12345"));
-        USERS.put(2L, new User(2L,"Anna", "t.anna@web.de", "23456"));
-        USERS.put(3L, new User(3L,"Stefan", "m.stefan@web.de", "34567"));
-        USERS.put(4L, new User(4L,"Maria", "b.maria@web.de", "45678"));
+
+    @GetMapping("/users")
+    public ResponseEntity<List<UserResponseDto>> getUsers(@RequestParam (name = "sort", defaultValue = "") String sortType){
+        if (sortType.equals("email")) {
+            return ResponseEntity.status(HttpStatus.OK).body(service.getAllUsersOrderedByEmail());
+        } else if (sortType.equals("name")) {
+            return ResponseEntity.status(HttpStatus.OK).body(service.getAllUsersOrderedByName());
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(service.getAllUsers());
     }
-
-
+/*
     @GetMapping("/users")
     public ResponseEntity<List<UserResponseDto>> getUser(
             @RequestParam(name = "sort", defaultValue = "") String sortType
     ) {
         List<UserResponseDto> usersResponseDto = USERS.entrySet().stream()
                 .map(Map.Entry::getValue)
-                .map(u -> new UserResponseDto(u.getId(), u.getEmail(), u.getName()))
+                //.map(u -> new UserResponseDto(u.getId(), u.getEmail(), u.getName()))
+                .map(mapper::toResponseDto)
                 .toList();
 
         usersResponseDto = new ArrayList<>(usersResponseDto);
@@ -59,6 +64,6 @@ public class UserController {
         UserResponseDto userResponseDto = new UserResponseDto(lastId, userRequestDto.getEmail(), userRequestDto.getName());
         return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDto);
     }
-
+*/
 
 }
