@@ -29,8 +29,8 @@ private final CurrencyMapper mapper;
 
     @Override
     public double convert(String code1,String code2,double amount) {
-        double rate1 = repository.findRate(code1);
-        double rate2 = repository.findRate(code2);
+        double rate1 = repository.findByCode(code1).getRate();
+        double rate2 = repository.findByCode(code2).getRate();
 
         double usdAmount=0;
         if(rate1>0 && rate2>0 && amount>0) {

@@ -34,15 +34,6 @@ public class CurrencyRepositoryImpl implements CurrencyRepository{
     }
 
     @Override
-    public double findRate(String currencyCode) {
-        Optional<Double> rate = CURRENCIES.stream()
-                .filter(c -> c.getCode().equalsIgnoreCase(currencyCode))
-                .map(Currency::getRate)
-                .findFirst();
-                return rate.orElse((double)0);
-    }
-
-    @Override
     public Currency add(Currency currency) {
         CURRENCIES.add(currency);
         return currency; //Подтверждаем

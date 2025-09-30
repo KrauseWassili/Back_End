@@ -8,7 +8,6 @@ public interface CurrencyRepository {
 
     public List<Currency> findAll();
     public Currency findByCode(String currencyCode);
-    public double findRate(String currencyCode);
     public Currency add(Currency currency);
 
 }
