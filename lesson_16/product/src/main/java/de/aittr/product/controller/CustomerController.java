@@ -23,6 +23,18 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.OK).body(service.getAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerResponseDto> getById(
+            @PathVariable (name="id") long customerId
+    ) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.getById(customerId));
+        } catch (CustomerNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
     @PostMapping()
     public ResponseEntity<CustomerResponseDto> addCustomer(@RequestBody CustomerRequestDto dto) {
         try {
@@ -47,8 +59,7 @@ public class CustomerController {
 
 
             } catch (CustomerNotFoundException e) {
-                return ResponseEntity.internalServerError().build();
-
+                return ResponseEntity.notFound().build();
             }
         return null;
 
