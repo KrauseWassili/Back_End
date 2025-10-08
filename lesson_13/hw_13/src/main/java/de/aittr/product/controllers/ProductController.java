@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -56,12 +55,12 @@ public class ProductController {
 
 
     @PostMapping("/products")
-    public ResponseEntity<?> addProduct(@RequestBody ProductRequestDto product) {
+    public ResponseEntity<Integer> addProduct(@RequestBody ProductRequestDto product) {
             return ResponseEntity.status(HttpStatus.CREATED).body(service.addProduct(product));
     }
 
     @PutMapping("/products")
-    public ResponseEntity<?> setActive(
+    public ResponseEntity<ProductResponseDto> setActive(
             @RequestParam(name= "id") long productId,
             @RequestParam(name= "active") boolean active
             ){
